@@ -5,6 +5,6 @@
 <p>
 Suggest me some good Name 👉
   <a href="https://twitter.com/rajni2k2">
-    <img alt="Follow Me on Twitter" src="https://img.shields.io/twitter/follow/excalidraw.svg?label=follow+@excalidraw&style=social&logo=twitter"/>
+    <img alt="Follow Me on Twitter" src="https://img.shields.io/twitter/follow/rajni.svg?label=follow+@rajni&style=social&logo=twitter"/>
   </a>
 </p>
