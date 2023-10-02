@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="py-10 px-5">
+        <main className="py-10 px-5 bg-black h-screen">
           <Navbar name="<rajni.dev/>" currPath="/" />
           {children}
         </main>
