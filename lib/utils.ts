@@ -34,3 +34,5 @@ const readJSONdocs = async (directoryPath: string): Promise<object[] | object> =
     return ({ err });
   }
 }
+
+export { readJSONdocs, cn };
