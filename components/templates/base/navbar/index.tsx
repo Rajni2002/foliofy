@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { NavbarProps, NavItem } from '../@types/prop-types';
+import { NavbarProps, NavItem } from '../../@types/props-types';
 import { cn } from '@/lib/utils';
 import { Amaranth } from 'next/font/google';
 import { MoonStar, X } from 'lucide-react';
