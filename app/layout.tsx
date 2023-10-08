@@ -1,5 +1,8 @@
 import Navbar from '@/components/templates/base/navbar'
+import { ThemeProvider } from '@/components/theme-provider'
+
 import './globals.css'
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
@@ -19,11 +22,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="py-10 px-5 bg-black h-screen">
-          <Navbar name="<rajni.dev/>" currPath="/" />
-          {children}
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="py-10 px-5 bg-white dark:bg-black h-screen">
+            <Navbar name="<rajni.dev/>" currPath="/"/>
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
+
     </html>
   )
 }

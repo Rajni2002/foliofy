@@ -1,11 +1,11 @@
 // Type definitions for prop-types of each template components
 
 export type NavbarProps = {
-    name: string;
+    name: string
     currPath: `/${string}`
 }
 
 export type NavItem = {
-    name: string;
+    name: string
     path: `/${string}`
 }
