@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { Amaranth } from 'next/font/google';
 import { MoonStar, X, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { Button } from '@/components/ui/button';
 
 const amaranth = Amaranth({ weight: "700", style: "italic", subsets: ["latin"] })
 
@@ -59,20 +60,21 @@ const Navbar: React.FC<NavbarProps> = ({ name, currPath }) => {
                                 <Sun color='black' />
                         }
                     </div>
-                    <button
-                        type="button"
-                        className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm md:hidden ease-linear"
+                    <Button
+                        variant="outline"
+                        size="icon"
+                        className='md:hidden'
                         onClick={() => setShowMenu(prev => !prev)}
                     >
                         <span className="sr-only">Open main menu</span>
                         {
                             showMenu ? <X color={theme === "dark" ? 'white' : "black"} />
                                 :
-                                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                     <path stroke={theme === "dark" ? 'white' : "black"} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 6h15M1 13h15" />
                                 </svg>
                         }
-                    </button>
+                    </Button>
                 </div>
             </div>
         </nav>
