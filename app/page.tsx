@@ -1,28 +1,50 @@
-"use client"
+'use client'
+import parseHTML from "@/lib/html-parser";
+import { convertMarkdownToHtml, checkEnvironment } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
-export const checkEnvironment = () => {
-  let base_url =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : "https://example.com"; // https://v2ds.netlify.app
+// export async function getStaticProps() {
+//   // Specify the path to your Markdown file
+//   const markdownFilePath = path.join(process.cwd(), 'example.md');
 
-  return base_url;
-};
+//   try {
+//     // Read the contents of the Markdown file as a string
+//     const markdownContent = fs.readFileSync(markdownFilePath, 'utf-8');
 
-const fetchData = async () => {
-  const response = await fetch(checkEnvironment() + '/api/json', {
-    method: "GET"
-  })
-  const data = await response.json();
-  console.log(data);
-}
+//     // Pass the markdownContent as a prop to your component
+//     return {
+//       props: {
+//         markdownContent,
+//       },
+//     };
+//   } catch (error) {
+//     console.error('Error reading Markdown file:', error);
+//     return {
+//       props: {
+//         markdownContent: '',
+//       },
+//     };
+//   }
+// }
 
 export default function Home() {
+  const [heroSection, setHeroSection] = useState<string>("");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(checkEnvironment() + '/api/json', {
+          method: "GET"
+        })
+        return await response.json();
+      } catch (error) {
+        return error;
+      }
+    }
+    fetchData().then((data) => setHeroSection(convertMarkdownToHtml(data.markdownContent))).catch(err => console.log(err));
+  }, [])
   return (
-    <div className="flex place-items-center justify-center mt-10">
-      <p className="text-black dark:text-white">
-        ✨Unlock the limitless potential of your developer portfolio with a highly customizable starter package – Craft Your Digital Showcase! 🏗
-      </p>
-    </div>
+    <div className="flex place-items-center justify-center mt-10" >
+      {heroSection.length !== 0 && parseHTML(heroSection)}
+    </div >
   )
 }

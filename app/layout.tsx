@@ -28,8 +28,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="py-10 px-5 bg-white dark:bg-black h-screen">
-            <Navbar name="<rajni.dev/>" currPath="/"/>
+          <main className="py-10 px-5 h-screen dark:bg-gradient-to-t from-black to-main-deriv" >
+            <Navbar name="<rajni.dev/>" currPath="/" />
             {children}
           </main>
         </ThemeProvider>
