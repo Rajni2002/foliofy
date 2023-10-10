@@ -77,6 +77,19 @@ const convertMarkdownToHtml = (markdownText: string) => {
   // Convert inline code (e.g., `code` => <code>code</code>)
   markdownText = markdownText.replace(/`([^`]+)`/g, '<code>$1</code>');
 
+  // Wrap normal text containing formatting in <p> tags
+  markdownText = markdownText.replace(/(^|<br>)([^<]+)(?=<br>|$)/g, function (match, p1, p2) {
+    // Don't wrap if it's already in a special HTML tag
+    if (/^<\w+>|<\/\w+>$/.test(p2)) {
+      return p1 + p2;
+    } else {
+      return p1 + '<p>' + p2.trim() + '</p>';
+    }
+  });
+
+  // Replace <br> with line breaks
+  markdownText = markdownText.replace(/<br>/g, '<br>');
+
   return markdownText;
 }
 

@@ -1,7 +1,3 @@
-# **नमस्ते** 🙏🏽,
+# **नमस्ते** 🙏🏽,<br> I’m *rajni* - Loves to <br> Tinker with <u>**Frontend**</u>
 
-# I’m **rajni** - Loves to
-
-# Tinker with <u>**Frontend**</u>
-
-**this is space for • showcase • builds & crafts • hangout 👀**
+*a space for* **showcase • builds & crafts • hangout 👀 hello world**
