@@ -4,30 +4,6 @@ import { convertMarkdownToHtml, checkEnvironment, cn } from '@/lib/utils';
 import { Montserrat } from "next/font/google";
 import { useEffect, useState } from 'react';
 
-// export async function getStaticProps() {
-//   // Specify the path to your Markdown file
-//   const markdownFilePath = path.join(process.cwd(), 'example.md');
-
-//   try {
-//     // Read the contents of the Markdown file as a string
-//     const markdownContent = fs.readFileSync(markdownFilePath, 'utf-8');
-
-//     // Pass the markdownContent as a prop to your component
-//     return {
-//       props: {
-//         markdownContent,
-//       },
-//     };
-//   } catch (error) {
-//     console.error('Error reading Markdown file:', error);
-//     return {
-//       props: {
-//         markdownContent: '',
-//       },
-//     };
-//   }
-// }
-
 const mont = Montserrat({ subsets: ['latin'] })
 
 export default function Home() {
