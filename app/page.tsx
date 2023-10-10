@@ -1,6 +1,7 @@
 'use client'
 import parseHTML from "@/lib/html-parser";
-import { convertMarkdownToHtml, checkEnvironment } from '@/lib/utils';
+import { convertMarkdownToHtml, checkEnvironment, cn } from '@/lib/utils';
+import { Montserrat } from "next/font/google";
 import { useEffect, useState } from 'react';
 
 // export async function getStaticProps() {
@@ -27,6 +28,8 @@ import { useEffect, useState } from 'react';
 //   }
 // }
 
+const mont = Montserrat({ subsets: ['latin'] })
+
 export default function Home() {
   const [heroSection, setHeroSection] = useState<string>("");
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function Home() {
     fetchData().then((data) => setHeroSection(convertMarkdownToHtml(data.markdownContent))).catch(err => console.log(err));
   }, [])
   return (
-    <div className="flex place-items-center justify-center mt-10" >
+    <div className={cn("flex flex-col justify-center text-center mt-10", mont.className)} >
       {heroSection.length !== 0 && parseHTML(heroSection)}
     </div >
   )

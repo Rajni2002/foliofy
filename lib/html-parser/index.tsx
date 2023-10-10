@@ -1,10 +1,20 @@
 import React from 'react';
+import { customStylesMap, ValidHTMLElements } from '@/config/markdown/styles';
 
-const parseHTML = (htmlString: string) => {
+const parseHTMLwithCustomStyles = (htmlString: string) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlString, 'text/html');
 
     const elements: React.ReactNode[] = [];
+
+    const isSelfClosingTag = (tagName: string) => {
+        // List of common self-closing tag names
+        const selfClosingTags = [
+            'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'
+        ];
+
+        return selfClosingTags.includes(tagName);
+    };
 
     const traverse = (node: Node) => {
         if (node.nodeType === Node.TEXT_NODE) {
@@ -12,6 +22,10 @@ const parseHTML = (htmlString: string) => {
         } else if (node.nodeType === Node.ELEMENT_NODE) {
             const element = node as Element;
             const tagName = element.tagName.toLowerCase();
+
+            if (element.childNodes.length === 0 && isSelfClosingTag(tagName)) {
+                return React.createElement(tagName, { key: elements.length });
+            }
             const attributes: { [key: string]: string } = {};
 
             // Extract attributes
@@ -19,6 +33,10 @@ const parseHTML = (htmlString: string) => {
                 const attr = element.attributes[i];
                 attributes[attr.name] = attr.value;
             }
+
+
+            // add custom styles to the nodes
+            const customStyles: React.CSSProperties = customStylesMap[tagName as ValidHTMLElements] ?? {};
 
             const children: React.ReactNode[] = [];
 
@@ -33,7 +51,7 @@ const parseHTML = (htmlString: string) => {
 
             return React.createElement(
                 tagName,
-                { ...attributes, key: elements.length },
+                { ...attributes, style: customStyles, key: elements.length },
                 children
             );
         }
@@ -49,4 +67,4 @@ const parseHTML = (htmlString: string) => {
     return elements;
 };
 
-export default parseHTML;
+export default parseHTMLwithCustomStyles;

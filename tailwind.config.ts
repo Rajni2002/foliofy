@@ -19,7 +19,7 @@ const config: Config = {
     extend: {
       colors: {
         main: "var(--color-main)",
-        "main-deriv": "var(--color-main-deriv)", 
+        "main-deriv": "var(--color-main-deriv)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
