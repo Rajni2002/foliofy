@@ -1,27 +1,24 @@
 import React from 'react';
-import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import Features from '@site/src/components/Features';
-import Header from '@site/src/components/Header';
-
-import styles from './index.module.css';
+import Header from '@site/src/components/header';
+import Navbar from '../components/navbar';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <div
       title={siteConfig.title}
-      className={clsx(styles["home-bg"])}>
-      <div className={clsx(styles["star-field"])} >
-        <div className={clsx(styles["layer"])} />
-        <div className={clsx(styles["layer"])} />
-        <div className={clsx(styles["layer"])} />
+      className="home-bg">
+      <div className="star-field" >
+        <div className="layer" />
+        <div className="layer" />
+        <div className="layer" />
       </div>
-      <Header />
-      <main>
-        <Features />
-      </main>
+      <Navbar />
+      {/* <Header /> */}
+      {/* <Features /> */}
     </div>
   );
 }
