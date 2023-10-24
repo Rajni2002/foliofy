@@ -5,12 +5,10 @@ import Link from '@docusaurus/Link';
 const Navbar: React.FC = () => {
 
     return (
-        <div className='flex justify-between' onClick={()=>{
-            console.log("ckenfmn");
-        }}>
-            <Logo className="h-8 w-40 cursor-pointer" />
+        <div className='flex justify-between'>
+            <Logo className="h-6 w-24 md:h-8 md:w-40 cursor-pointer" />
             <Link href='https://github.com/Rajni2002/foliofy' className="cursor-pointer">
-                <img src="/img/social/github-hero.svg" alt='github-icon' />
+                <img src="/img/social/github-hero.svg" alt='github-icon' className='h-6'/>
             </Link>
         </div>
     );
