@@ -2,7 +2,7 @@ import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 import Features from '@site/src/components/Features';
-import Header from '@site/src/components/header';
+import Header from '../components/header';
 import Navbar from '../components/navbar';
 
 export default function Home(): JSX.Element {
