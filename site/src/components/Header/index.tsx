@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Header() {
+const Header: React.FC = () => {
     return (
-        <header className='my-16' onClick={()=>{
+        <header className='my-16' onClick={() => {
             console.log("ckenfmn");
         }}>
             <h3 className="text-center text-xl md:text-4xl font-semibold md:mt-6">Build & Deploy your</h3>
@@ -17,3 +17,4 @@ export default function Header() {
     );
 }
 
+export default Header

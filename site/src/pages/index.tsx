@@ -1,7 +1,7 @@
 import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
-import Features from '@site/src/components/Features';
+// import Features from '@site/src/components/Features';
 import Header from '../components/header';
 import Navbar from '../components/navbar';
 
