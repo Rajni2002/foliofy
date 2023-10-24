@@ -20,3 +20,4 @@ exec(`lsof +D "${directoryToCheck}" -F json`, (error, stdout) => {
         process.exit(1);
     }
 });
+

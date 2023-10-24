@@ -1,22 +1,19 @@
 import React from 'react';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export default function Header() {
-    const { siteConfig } = useDocusaurusContext();
     return (
-        <header>
-            <div className="container">
-                <h1 className="hero__title">{siteConfig.title}</h1>
-                <p className="hero__subtitle">{siteConfig.tagline}</p>
-                <div>
-                    <Link
-                        className="button button--secondary button--lg"
-                        to="/docs/intro">
-                        Be the first one 🚀
-                    </Link>
-                </div>
-            </div>
+        <header className='my-16' onClick={()=>{
+            console.log("ckenfmn");
+        }}>
+            <h3 className="text-center text-xl md:text-4xl font-semibold md:mt-6">Build & Deploy your</h3>
+            <h1 className="text-center text-[2rem] md:text-8xl font-black bg-gradient-to-l from-orange-500 from-[5%] to-[#7834FF] bg-clip-text text-transparent">Super-portfolio.</h1>
+            <h3 className="text-center text-xl md:text-4xl font-semibold md:my-6">
+                in just
+                <i className='ml-3 underline'>
+                    60 sec
+                </i>
+            </h3>
         </header>
     );
 }
+
