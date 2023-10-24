@@ -2,8 +2,8 @@ import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 // import Features from '@site/src/components/Features';
-import Header from '../components/header';
-import Navbar from '../components/navbar';
+import Header from '../components/Header';
+import Navbar from '../components/Navbar';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
