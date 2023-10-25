@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import SignatureButton from '../ui/Buttons/signature';
 import cn from '@site/utils/cn';
-import useSearchParams from '@site/src/hooks/useSearchParams';
+import { useHistory, useLocation } from '@docusaurus/router';
 
 const Header: React.FC = () => {
     const [count, setCount] = useState<number | "Kidding 🤣">(0);
-    const { searchParams, setParamsValue, removeParamsValue } = useSearchParams()
+    const location = useLocation();
+    const history = useHistory();
+    const [joinListModal, setJoinListModal] = useState<boolean>(new URLSearchParams(location.search).get("join") === "superlist");
+
+    useEffect(() => {
+        setJoinListModal(new URLSearchParams(location.search).get("join") === "superlist")
+    }, [location.search])
+
     // Countdown effect
     useEffect(() => {
         let start = 0;
@@ -33,7 +40,9 @@ const Header: React.FC = () => {
     }, [])
     return (
         <header className='my-16'>
-            {searchParams.get("join") === "superlist" && <div className={cn("h-full backdrop-blur-lg absolute left-0 right-0 w-100 top-0")} onClick={() => { removeParamsValue("join") }}>
+            {joinListModal && <div className={cn("h-full backdrop-blur-lg absolute left-0 right-0 w-100 top-0")} onClick={() => history.push({
+                search: "",
+            })}>
             </div>}
             <h3 className="text-center text-xl md:text-4xl font-semibold md:mt-6">Build & Deploy your</h3>
             <h1 className="text-center text-[2.2rem] md:text-8xl font-black bg-gradient-to-l from-orange-500 from-[5%] to-[#7834FF] bg-clip-text text-transparent">Super-portfolio.</h1>
@@ -43,7 +52,9 @@ const Header: React.FC = () => {
                     {typeof (count) === "number" ? `${count} min` : count}
                 </span>
             </h3>
-            <SignatureButton className='mx-auto' clickHandler={() => setParamsValue("join", "superlist")} />
+            <SignatureButton className='mx-auto' clickHandler={() => history.push({
+                search: "join=superlist",
+            })} />
         </header>
     );
 }
