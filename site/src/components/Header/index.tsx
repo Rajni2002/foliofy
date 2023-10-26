@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import SignatureButton from '../ui/Buttons/signature';
-import cn from '@site/utils/cn';
+import { SignatureButton } from '../ui/Buttons/signature';
 import { useHistory, useLocation } from '@docusaurus/router';
+import JoinSuperList from '../JoinSuperList';
+import { GradientHeading, HeadingSecondary } from '../ui/Text/gradient-heading';
 
 const Header: React.FC = () => {
     const [count, setCount] = useState<number | "Kidding 🤣">(0);
@@ -39,20 +40,19 @@ const Header: React.FC = () => {
         }, incrementTime);
     }, [])
     return (
-        <header className='my-16'>
-            {joinListModal && <div className={cn("h-full backdrop-blur-lg absolute left-0 right-0 w-100 top-0")} onClick={() => history.push({
+        <header className='my-16 text-center'>
+            <JoinSuperList isOpen={joinListModal} visiblityHandler={() => history.push({
                 search: "",
-            })}>
-            </div>}
-            <h3 className="text-center text-xl md:text-4xl font-semibold md:mt-6">Build & Deploy your</h3>
-            <h1 className="text-center text-[2.2rem] md:text-8xl font-black bg-gradient-to-l from-orange-500 from-[5%] to-[#7834FF] bg-clip-text text-transparent">Super-portfolio.</h1>
-            <h3 className="text-center text-xl md:text-4xl font-semibold md:my-6">
+            })} />
+            <HeadingSecondary>Build & Deploy your</HeadingSecondary>
+            <GradientHeading>Super-portfolio.</GradientHeading>
+            <HeadingSecondary>
                 in just
                 <span className='ml-2 underline'>
                     {typeof (count) === "number" ? `${count} min` : count}
                 </span>
-            </h3>
-            <SignatureButton className='mx-auto' clickHandler={() => history.push({
+            </HeadingSecondary>
+            <SignatureButton className='mt-5' onClick={() => history.push({
                 search: "join=superlist",
             })} />
         </header>

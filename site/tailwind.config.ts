@@ -73,6 +73,10 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        'stars': "url('/background/stars.png')",
+        "carvan": "url('/background/carvan.png')"
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

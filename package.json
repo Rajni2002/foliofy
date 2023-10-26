@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "site": "npm start --prefix ./site"
+    "site": "cd site && npm start"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2",
