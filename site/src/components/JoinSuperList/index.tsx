@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HeadingSecondary, GradientHeading } from '../ui/Text/gradient-heading';
 import { Input, Textarea } from '../ui/Input';
 import CancelIcon from "@site/static/icons/cancel.svg"
@@ -18,6 +18,9 @@ type JoinListFormType = {
 
 const JoinSuperList = ({ isOpen, visiblityHandler }: JoinSuperListProps): JSX.Element => {
     const { siteConfig } = useDocusaurusContext();
+    useEffect(() => {
+        console.log(siteConfig.customFields.NOTION_DB_KEY);
+    }, [siteConfig])
 
     const [joinListFormData, setJoinListFormData] = useState<JoinListFormType>({
         fullName: "",
