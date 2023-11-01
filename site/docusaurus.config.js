@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+require('dotenv').config()
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
@@ -9,7 +9,6 @@ const config = {
   title: 'Foliofy',
   tagline: 'Build and Deploy Super-Portfolio in 60 seconnds',
   favicon: 'img/favicon.ico',
-
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -84,6 +83,10 @@ const config = {
       },
     };
   }],
+
+  customFields: {
+    NOTION_DB_KEY: process.env.NOTION_DB_KEY,
+  }
 };
 
 module.exports = config;
