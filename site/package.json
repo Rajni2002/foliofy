@@ -18,6 +18,7 @@
     "@docusaurus/core": "2.4.3",
     "@docusaurus/preset-classic": "2.4.3",
     "@mdx-js/react": "^1.6.22",
+    "axios": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
     "dotenv": "^16.3.1",
@@ -49,5 +50,6 @@
   },
   "engines": {
     "node": ">=16.14"
-  }
+  },
+  "proxy": "https://api.notion.com/"
 }

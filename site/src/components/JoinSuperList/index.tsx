@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { HeadingSecondary, GradientHeading } from '../ui/Text/gradient-heading';
 import { Input, Textarea } from '../ui/Input';
 import CancelIcon from "@site/static/icons/cancel.svg"
@@ -18,9 +18,6 @@ type JoinListFormType = {
 
 const JoinSuperList = ({ isOpen, visiblityHandler }: JoinSuperListProps): JSX.Element => {
     const { siteConfig } = useDocusaurusContext();
-    useEffect(() => {
-        console.log(siteConfig.customFields.NOTION_DB_KEY);
-    }, [siteConfig])
 
     const [joinListFormData, setJoinListFormData] = useState<JoinListFormType>({
         fullName: "",
@@ -59,7 +56,39 @@ const JoinSuperList = ({ isOpen, visiblityHandler }: JoinSuperListProps): JSX.El
 
     const handleSubmit = async () => {
         try {
-
+            const newData = {
+                "parent": { "type": "database_id", "database_id": "4bfba2968a1e437087e358bb6f28a2ac" },
+                "properties": {
+                    "Name": {
+                        "type": "title",
+                        "title": [{ "type": "text", "text": { "content": joinListFormData.fullName } }]
+                    },
+                    "Email": {
+                        "type": "email",
+                        "email": joinListFormData.email
+                    },
+                    "Date": {
+                        "type": "date",
+                        "date": { "start": new Date().toISOString() }
+                    },
+                    "Feedback": {
+                        "type": "feedback",
+                        "feedback": [{ "type": "text", "text": { "content": joinListFormData.feedback ?? "" } }]
+                    }
+                }
+            }
+            const res = await fetch("https://api.notion.com/v1/pages", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${siteConfig.customFields.NOTION_DB_KEY}`,
+                    "Notion-Version": "2022-06-28",
+                    "Access-Control-Allow-Origin": "https://api.notion.com",
+                },
+                body: JSON.stringify(newData),
+                mode: "cors"
+            })
+            alert("Done");
         } catch (error) {
             console.log(error);
             alert(error)
